@@ -1,0 +1,36 @@
+# === Go build files ===
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# === Go cache & build dirs ===
+/bin/
+/build/
+/dist/
+/out/
+/tmp/
+
+# === Go modules ===
+go.sum
+
+# === IDE/Editor ===
+.vscode/
+.idea/
+*.iml
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+
+# === Env & credentials ===
+.env
+*.env
+*.key
+*.pem
+*.crt
+*.db
