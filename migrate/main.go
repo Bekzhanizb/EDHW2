@@ -8,17 +8,17 @@ import (
 )
 
 func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDatabase()
+	initializer.LoadEnvVariables()
+	initializer.ConnectToDatabase()
 }
 
 func main() {
-	log.Println("🚀 Running migrations...")
+	log.Println("Running migrations...")
 
-	err := initializers.DB.AutoMigrate(&models.User{})
+	err := initializer.DB.AutoMigrate(&models.User{})
 	if err != nil {
-		log.Fatal("❌ Migration failed:", err)
+		log.Fatal("Migration failed:", err)
 	}
 
-	log.Println("✅ Migration complete!")
+	log.Println("Migration complete!")
 }
