@@ -1,4 +1,4 @@
-package main
+package migrate
 
 import (
 	"log"
@@ -7,18 +7,10 @@ import (
 	"github.com/Bekzhanizb/EDHW2/models"
 )
 
-func init() {
-	initializer.LoadEnvVariables()
-	initializer.ConnectToDatabase()
-}
-
-func main() {
-	log.Println("Running migrations...")
-
+func RunMigrations() {
 	err := initializer.DB.AutoMigrate(&models.User{})
 	if err != nil {
 		log.Fatal("Migration failed:", err)
 	}
-
-	log.Println("Migration complete!")
+	log.Println("Migrations applied")
 }

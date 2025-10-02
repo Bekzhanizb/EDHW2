@@ -11,7 +11,7 @@ import (
 
 var DB *gorm.DB
 
-func ConnectToDatabase() {
+func ConnectDB() {
 	dsn := fmt.Sprintf(
 		"host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
 		AppConfig.DBHost,
@@ -25,18 +25,17 @@ func ConnectToDatabase() {
 	var err error
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Fatal("❌ Failed to connect to database:", err)
+		log.Fatal("Failed to connect to database:", err)
 	}
 
 	sqlDB, err := DB.DB()
 	if err != nil {
-		log.Fatal("❌ Failed to get sql.DB:", err)
+		log.Fatal("Failed to get sql.DB:", err)
 	}
 
-	// connection pool
 	sqlDB.SetMaxOpenConns(10)
 	sqlDB.SetMaxIdleConns(5)
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
-	log.Println("✅ Database connected")
+	log.Println("Database connected")
 }
